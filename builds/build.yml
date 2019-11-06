@@ -88,7 +88,7 @@ stages:
           - task: AzureResourceGroupDeployment@2
             displayName: 'Azure Deployment:Create Or Update Resource Group action on ZeroToPipeline'
             inputs:
-              azureSubscription: 'ca-stmuraws-demo-test'
+              azureSubscription: 'Visual Studio Enterprise (MVP)'
               resourceGroupName: '$(baseName)$(DeploymentEnvironment)'
               location: 'Central US'
               csmFile: '$(Pipeline.Workspace)/drop/templates/website.json'
@@ -97,7 +97,7 @@ stages:
           - task: AzureCLI@2
             displayName: Deploy Dev Website
             inputs:
-              azureSubscription: 'ca-stmuraws-demo-test'
+              azureSubscription: 'Visual Studio Enterprise (MVP)'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: 'az webapp deployment source config-zip -g $(baseName)$(DeploymentEnvironment) -n $(baseName)$(DeploymentEnvironment)$(baseUniqueId) --src $(Pipeline.Workspace)/drop/ZeroToPipeline.zip'
